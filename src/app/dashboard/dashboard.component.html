@@ -1,62 +1,67 @@
-
 <nav class="navbar  sticky-top navbar-expand-lg ">
-  
+
 
 
   <div class="container-fluid">
     <ul class="nav navbar-nav">
       <a class="navbar-brand" href="#">Catcotrade</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
     </ul>
     <ul class="nav navbar-nav mx-auto">
-        <li class="nav-item"><a class="nav-link" href="#">Welcome   :  {{name}}</a></li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Welcome : Administrator</a>
+      </li>
     </ul>
     <ul class="nav navbar-nav">
-        
-        <li class="nav-item">
-            <a class="nav-link" (click)="logout()" href="#">Logout</a>
-        </li>
-      
-    </ul>
-</div>
 
-</nav>  
+      <li class="nav-item">
+        <a class="nav-link" (click)="logout()" href="#">Logout</a>
+      </li>
+
+    </ul>
+  </div>
+
+</nav>
 
 
 <div class="row h-100" style="margin-right:0px">
 
-      
-    <div class="col-2 side-nav sidenavigation" style="">
-        <div class="" style="">
-        <nav class="nav flex-column nl">
+
+  <div class="col-2 side-nav sidenavigation" style="">
+    <div class="" style="">
+      <nav class="nav flex-column nl">
 
 
-            <a class="nav-link active" routerLink="/dashboard/accountsummary" routerLinkActive="nla"><i class="fas fa-user-circle fa-lg"></i> Account Summary</a>
-            <a class="nav-link active" routerLink="/dashboard/investments" routerLinkActive="nla"> <i class="fas fa-money-bill-alt fa-lg"></i>  My Holdings
-            </a>
-            
-            <a class="nav-link" routerLink="/dashboard/referrals" routerLinkActive="nla"><i class="fas fa-users fa-lg"></i>My Referrals&nbsp;
-            </a>
-            <a class="nav-link" routerLink="/dashboard/transactions" routerLinkActive="nla"><i class="fas fa-exchange-alt fa-lg"></i> Transactions</a>
-            <a class="nav-link" routerLink="/dashboard/wallettransfer" routerLinkActive="nla"> <i class="fas fa-credit-card
-                fa-lg"></i>&nbsp;Wallet Transfer</a>
-            <a class="nav-link" routerLink="/dashboard/withdraw" routerLinkActive="nla"> <i class="fas fa-dollar-sign fa-lg"></i> Withdraw</a>
+        <a class="nav-link active" routerLink="/dashboard/users" routerLinkActive="nla">
+          <i class="fas fa-user-circle fa-lg"></i> Users </a>
+        <a class="nav-link active" routerLink="/dashboard/useraccounts" routerLinkActive="nla">
+          <i class="fas fa-money-bill-alt fa-lg"></i> User accounts
+        </a>
 
-            <a class="nav-link " routerLink="/dashboard/profile" routerLinkActive="nla"><i class="fas fa-user-circle fa-lg"></i> My Profile</a>
+        <a class="nav-link" routerLink="/dashboard/investments" routerLinkActive="nla">
+          <i class="fas fa-exchange-alt fa-lg"></i>Investments&nbsp;
+        </a>
+        <a class="nav-link" routerLink="/dashboard/transactions" routerLinkActive="nla">
+          <i class="fas fa-exchange-alt fa-lg"></i> Transactions</a>
+
+        <a class="nav-link" routerLink="/dashboard/withdrawalrequests" routerLinkActive="nla">
+          <i class="fas fa-dollar-sign fa-lg"></i> Withdrawal Requests</a>
+
+        <a class="nav-link " routerLink="/dashboard/addwalletbalance" routerLinkActive="nla">
+          <i class="fas fa-user-circle fa-lg"></i> Add wallet balance</a>
 
 
-          </nav>
-        </div>
-        </div>
-       
-<div class="col-10 h-100">
-  <router-outlet></router-outlet>
+      </nav>
+    </div>
+  </div>
 
+  <div class="col-10 h-100">
+    <router-outlet></router-outlet>
+
+
+  </div>
 
 </div>
-
-</div>
-
-

@@ -22,7 +22,7 @@ children :[
     { path : 'investments' , component :InvestmentsComponent },
     { path : 'transactions' , component : TransactionsComponent},
     { path : 'withdrawalrequests' , component : WithdrawalrequestsComponent },
-    { path : 'addwalletbalance' , component : },
+    { path : 'addwalletbalance' , component : AddwalletbalanceComponent },
 
 
 
