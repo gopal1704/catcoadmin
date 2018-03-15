@@ -1,3 +1,70 @@
-<p>
-  useraccounts works!
-</p>
+<div class="row" >
+
+
+  <div class="col-12">
+
+    <div class="row" >
+      <div class="col">
+        <h2 class="main-header">User Accounts</h2>
+      </div>
+    </div>
+    <div class="row" >
+
+      <div class="col" >
+        <table id="usertable" class="table table-bordered table-hover table-striped text-nowrap">
+          <thead>
+            <tr>
+              <th>Name </th>
+              <th>Date of Joining </th>
+
+              <th>Id</th>
+              <th>Referral Id </th>
+              <th>Wallet Balance</th>
+              <th>Pending Balance</th>
+              <th>Referral comission</th>
+              <th>Monthly Ref. Earnings</th>
+              <th>Total Holdings
+              </th>
+              <th>Approval staus</th>
+              <th>Transaction status</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let u of useraccounts">
+              
+<td>{{u.name}}</td>
+              
+<td>{{u.joiningdate}}</td>
+
+<td>{{u.uid}}</td>
+
+<td>{{u.referralid}}</td>
+
+<td>{{u.walletbalance}}</td>
+
+<td>{{u.walletpendingbalance}}</td>
+<td>{{u.totalspotearnings}}</td>
+
+<td>{{u.totalreferralearnings}}</td>
+<td>{{u.totalinvestment}}</td>
+
+
+
+
+
+
+
+            </tr>
+
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+
+
+
+
+  </div>
+</div>

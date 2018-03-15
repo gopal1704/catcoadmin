@@ -35,6 +35,18 @@ return r;
   }
   //////////
   get_user_accounts() {
+  
+    var useraccounts = this.afs.collection('accountsummary');
+    var r = useraccounts.snapshotChanges().map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data() ;
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      });
+    });
+
+return r;
+
 
   }
   //////////
