@@ -9,7 +9,7 @@
   <div class="row" >
   
     <div class="col"  style="overflow-x: scroll">
-        <table  id="usertable" class="table table-bordered table-hover table-striped text-nowrap" >
+        <table  id="usertable" style="line-height:60%" class="table table-bordered table-hover table-striped text-nowrap" >
             <thead>
               <tr >
                 <th >Name	</th>
@@ -36,7 +36,7 @@
             <tbody> 
     <tr *ngFor="let u of users">        
     <td>{{u.title}} {{u.displayname}} {{u.lastname}}</td>
-    <td> {{u.dob}} </td>
+    <td> {{cc(u.dob)}} </td>
     <td> {{u.gender}} </td>
     <td> {{u.dateofjoining}} </td>
     <td> {{u.email}} </td>

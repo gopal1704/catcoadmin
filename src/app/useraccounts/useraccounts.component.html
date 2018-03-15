@@ -11,22 +11,24 @@
     <div class="row" >
 
       <div class="col" >
-        <table id="usertable" class="table table-bordered table-hover table-striped text-nowrap">
+        <table id="usertable" style="line-height:60%" class="table table-bordered table-hover table-striped text-nowrap">
           <thead>
             <tr>
               <th>Name </th>
               <th>Date of Joining </th>
-
-              <th>Id</th>
-              <th>Referral Id </th>
+              <th>Total Holdings
+              </th>
               <th>Wallet Balance</th>
               <th>Pending Balance</th>
               <th>Referral comission</th>
               <th>Monthly Ref. Earnings</th>
-              <th>Total Holdings
-              </th>
+            
               <th>Approval staus</th>
               <th>Transaction status</th>
+
+              <th>Id</th>
+              <th>Referral Id </th>
+             
 
             </tr>
           </thead>
@@ -35,19 +37,22 @@
               
 <td>{{u.name}}</td>
               
-<td>{{u.joiningdate}}</td>
+<td>{{converttimestamp(u.joiningdate)}}</td>
+<td>${{u.totalinvestment}}</td>
 
+<td>${{u.walletbalance}}</td>
+
+<td>${{u.walletpendingbalance}}</td>
+<td>${{u.totalspotearnings}}</td>
+
+<td>${{u.totalreferralearnings}}</td>
+<td>{{u.approvalstatus}}</td>
+
+<td><span  *ngIf="u.transaction == true">approved</span><span  *ngIf="u.transaction == false">pending</span></td>
 <td>{{u.uid}}</td>
 
+
 <td>{{u.referralid}}</td>
-
-<td>{{u.walletbalance}}</td>
-
-<td>{{u.walletpendingbalance}}</td>
-<td>{{u.totalspotearnings}}</td>
-
-<td>{{u.totalreferralearnings}}</td>
-<td>{{u.totalinvestment}}</td>
 
 
 

@@ -13,7 +13,22 @@ import { element } from 'protractor';
 import { scan } from 'rxjs/operator/scan';
 import { FirebaseApp } from 'angularfire2';
 import { take } from 'rxjs/operator/take';
+declare var Messenger: any;
 
+interface Transaction {
+  timestamp: number;
+  uid: string;
+  type: string;
+  status: string;
+  from: string;
+  to: string;
+  amount: number;
+  debit: number;
+  credit: number;
+  narration: string;
+
+
+}
 @Injectable()
 export class DataService {
 
@@ -52,18 +67,142 @@ return r;
   //////////
   get_transactions() {
 
+    var transactions = this.afs.collection('transactions',ref=>{return ref.orderBy('timestamp','desc');});
+    var r = transactions.snapshotChanges().map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data() ;
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      });
+    });
+
+return r;
+
   }
   //////////
 
   /////////
+
   get_investments() {
+
+    var inv = this.afs.collection('investments');
+    var r = inv.snapshotChanges().map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data() ;
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      });
+    });
+
+return r;
 
   }
   //////////
-  get_withdrawal_requests(){
+  get_admin_withdrawal(){
+    var adminw = this.afs.collection('withdrawalrequest');
+    var r = adminw.snapshotChanges().map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data() ;
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      });
+    });
 
+return r;
+     
   }
 //////////
+approve_withdrawal_request(id,uid,amount,details){
 
+  var transaction_referral: Transaction = {
+    timestamp: Date.now(),
+    uid: uid,
+    type: 'WD',
+    status: 'success',
+    from: '',
+    to: '',
+    amount: 0,
+    debit: amount,
+    credit: 0,
+    narration: `Withdrawal ${details}`
+  };
+  var reftrans = this.afs.collection('/transactions');
+  const withdrawalr :AngularFirestoreDocument<any> = this.afs.doc(`withdrawalrequest/${id}`);
+  const summaryref: AngularFirestoreDocument<any> = this.afs.doc(`accountsummary/${uid}`);
+
+  withdrawalr.update({status:'approved'}).then((v)=>{
+    reftrans.add(transaction_referral).then((v)=>{
+      this.afs.doc<any>(`accountsummary/${uid}`).valueChanges().take(1).subscribe((v) => {
+
+        summaryref.update({
+          walletbalance : v.walletbalance - amount,
+        }).then(()=>{
+          return true;
+        });
+
+      });
+
+
+    })
+  });
+
+}
+
+
+  /***********WALLET TRANSFER*************** */
+  transfer_to_wallet(amount, to_wallet) {
+    
+    var reftrans = this.afs.collection('/transactions');
+    const toaccountsummaryref: AngularFirestoreDocument<any> = this.afs.doc(`accountsummary/${to_wallet}`);
+
+    var transaction_to: Transaction = {
+      timestamp: Date.now(),
+      uid: to_wallet,
+      type: 'CWT',
+      status: 'success',
+      from: 'admin',
+      to: to_wallet,
+      amount: 0,
+      debit: 0,
+      credit: amount,
+      narration: `Credit Wallet Transfer  from : admin `
+    };         
+
+         
+
+   
+      reftrans.add(transaction_to).then(()=>{
+        
+//UPDATE SUMMARY DATA
+this.afs.doc<any>(`accountsummary/${to_wallet}`).valueChanges().take(1).subscribe((v) => {
+
+  toaccountsummaryref.update({
+    walletbalance: v.walletbalance + parseInt(amount)
+  }).then(()=>{
+    Messenger().post({
+      message: 'Wallet balance added successfuly',
+      type: 'success',
+      showCloseButton: true
+    });
+  }).catch(e=>{
+    Messenger().post({
+      message: 'Error please try again.',
+      type: 'error',
+      showCloseButton: true
+    });
+  })
+
+});
+
+
+
+
+      });////to
+
+
+
+
+
+  } ////
 
 }

@@ -24,5 +24,13 @@ export class UsersComponent implements OnInit {
 
   }
 
+ cc(ts){
+
+        
+        var d = new Date(ts);
+       // return d.toLocaleString();
+         return  d.getDate() + '/' + (d.getMonth()+1) + '/' + d.getFullYear();
+        
+        }
 
 }
