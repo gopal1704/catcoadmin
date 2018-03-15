@@ -10,6 +10,7 @@ import { AngularFireStorageModule, AngularFireStorage} from 'angularfire2/storag
 import {AngularFireAuthModule} from 'angularfire2/auth';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import { DataService } from './data.service';
 
 
 import { AppComponent } from './app.component';
@@ -56,7 +57,7 @@ var config = {
     HttpClientModule,
     LoadingModule
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

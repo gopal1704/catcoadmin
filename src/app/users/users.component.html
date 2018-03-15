@@ -1,4 +1,68 @@
-<p>
-  users works!
-</p>
-<router-outlet></router-outlet>
+<div class="row">
+    
+       
+  <div class="col-12">
+  
+      <div class="row">
+              <div class="col"><h2 class="main-header">Users</h2>  </div>
+          </div>
+  <div class="row" >
+  
+    <div class="col"  style="overflow-x: scroll">
+        <table  id="usertable" class="table table-bordered table-hover table-striped text-nowrap" >
+            <thead>
+              <tr >
+                <th >Name	</th>
+                <th > Date of Birth	</th>
+                
+  
+                <th>Gender</th>
+                <th >Date of Joining	</th>
+                <th >Email</th>
+  
+                <th >Mobile</th>
+
+                <th >Referral Id	</th>
+
+                <th >Address	</th>
+
+                <th > City	</th>
+
+                <th >Country	</th>
+<th>Id</th>
+<th>Proof</th>
+              </tr>
+            </thead>
+            <tbody> 
+    <tr *ngFor="let u of users">        
+    <td>{{u.title}} {{u.displayname}} {{u.lastname}}</td>
+    <td> {{u.dob}} </td>
+    <td> {{u.gender}} </td>
+    <td> {{u.dateofjoining}} </td>
+    <td> {{u.email}} </td>
+    <td> {{u.mobile}} </td>
+
+    <td> {{u.referralid}} </td>
+    <td> {{u.address}} </td>
+    <td> {{u.city}} </td>
+    <td> {{u.country}} </td>
+    <td> {{u.uid}} </td>
+    <td>{{u.proofurl}}</td>
+
+
+
+
+
+      </tr>  
+  
+      </tbody>
+          </table>
+        
+    </div>
+  </div>
+  
+  
+  
+  
+  </div>
+  </div>
