@@ -9,6 +9,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { UsersComponent } from './users/users.component';
 import { UseraccountsComponent } from './useraccounts/useraccounts.component';
 import { InvestmentsComponent } from './investments/investments.component';
+import { TransactionsComponent } from './transactions/transactions.component';
+import { WithdrawalrequestsComponent } from './withdrawalrequests/withdrawalrequests.component';
+import { AddwalletbalanceComponent } from './addwalletbalance/addwalletbalance.component';
 
 
 @NgModule({
@@ -18,7 +21,10 @@ import { InvestmentsComponent } from './investments/investments.component';
     DashboardComponent,
     UsersComponent,
     UseraccountsComponent,
-    InvestmentsComponent
+    InvestmentsComponent,
+    TransactionsComponent,
+    WithdrawalrequestsComponent,
+    AddwalletbalanceComponent
   ],
   imports: [
     BrowserModule,
