@@ -13,38 +13,43 @@
           <div class="row">
 
             <div class="col">
-                <form>
+                <form   [formGroup]="usersearchForm" >
                     <div class="form-row">
-                      <div class="col">
-                        <input type="text" class="form-control" placeholder="Name">
-                      </div>
-                      <div class="col">
-                        <input type="text" class="form-control" placeholder="Email">
-                      </div>
-                      <div class="col">
-                          <input type="text" class="form-control" placeholder="Mobile">
-                        </div>
+                    
                         <div class="col">
-                            <input type="text" class="form-control" placeholder="User id">
+                            <select class="form-control"  formControlName="type" id="exampleFormControlSelect1">
+                              <option value="name">Name</option>
+                              <option value="email">Email</option>
+                              <option value = "mobile">Mobile</option>
+                              <option value="id">Id</option>
+                            </select>
+                          </div>
+                        <div class="col">
+
+                            <input type="text" formControlName="search" class="form-control" placeholder="">
                           </div>
                           <div class="col">
-                            <button type="button" class="btn btn-primary"> search</button>
+
+                            <button type="button"  class="form-control" (click)="search(usersearchForm.value)" class="btn btn-primary"> search</button>
                             </div>
                     </div>
                   </form>
             </div>
           </div>
+
+          
           <br>
           <br>
 
   <div class="row" >
   
     <div class="col"  style="overflow-x: scroll">
-        <table  id="usertable" style="line-height:60%" class="table table-bordered table-hover table-striped text-nowrap" >
+        <table style="font-size:80%" id="usertable"  class="table table-bordered table-hover table-striped" >
             <thead>
               <tr >
                 <th >Name	</th>
                 <th >Email</th>
+                <th>Id</th>
                  <th>Proof</th>
                  <th>Approval</th>
                  <th>Edit</th>
@@ -57,11 +62,12 @@
     <td style="width: 20%">{{u.title}} {{u.displayname}} {{u.lastname}}</td>
   
     <td  style="width: 20%"> {{u.email}} </td>
-    <td  style="width: 15%"><a href="{{u.proofurl}}">View proof</a></td>
-    <td style="width: 15%"><a href="{{u.proofurl}}">Approve</a></td>
-    <td style="width: 15%"><a href="{{u.proofurl}}">Edit</a></td>
+    <td  style="width: 20%"> {{u.uid}}</td>
+    <td  style="width: 10%"><a href="{{u.proofurl}}">View proof</a></td>
+    <td style="width: 10%"><a href="{{u.proofurl}}">Approve</a></td>
+    <td style="width: 10%"><a href="{{u.proofurl}}">Edit</a></td>
    
-    <td style="width: 15%"><a href="{{u.proofurl}}">View</a></td>
+    <td style="width: 10%"><a href="{{u.proofurl}}">View</a></td>
 
 
 

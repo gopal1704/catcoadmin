@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 
 @Component({
   selector: 'app-investments',
@@ -8,10 +10,21 @@ import { DataService } from '../data.service';
 })
 export class InvestmentsComponent implements OnInit {
 investments : any;
-  constructor(private ds: DataService) { }
+usersearchForm : FormGroup;
+
+  constructor(private ds: DataService,private fb: FormBuilder,private afs: AngularFirestore) { 
+
+  }
 
   ngOnInit() {
+    this.usersearchForm = this.fb.group({
+      'search': '',
+      'type': '',
+      'from':'',
+      'to' : ''
+      
 
+    });
 
   var investments = this.ds.get_investments().subscribe(v => {
       console.log(v);
@@ -35,4 +48,106 @@ investments : any;
       return this.converttimestamp(d);
        }
 
+search(formdata){
+console.log(formdata);
+if((formdata.from!="")&&(formdata.to!="")&&(formdata.type==""))
+{
+var invest = this.afs.collection('investments', ref => {
+  return ref.where("timestamp", ">=", new Date(formdata.from)).where("timestamp", "<=", new Date(formdata.to));
+});
+
+invest.valueChanges().subscribe((v)=>{
+this.investments = v;
+
+});
+
+
 }
+
+if((formdata.type!=="")&&(formdata.from=="")&&(formdata.to =="")){
+
+if(formdata.type == "name")
+{
+  var invest = this.afs.collection('investments', ref => {
+    return ref.where('name' , '==' ,formdata.search);
+  });
+  
+  invest.valueChanges().subscribe((v)=>{
+  this.investments = v;
+  });
+
+}
+
+if(formdata.type == "uid"){
+
+  var invest = this.afs.collection('investments', ref => {
+    return ref.where('uid' , '==' ,formdata.search);
+  });
+  
+  invest.valueChanges().subscribe((v)=>{
+  this.investments = v;
+  });
+}
+
+if(formdata.type == "rid"){
+  
+  var invest = this.afs.collection('investments', ref => {
+    return ref.where('referralid' , '==' ,formdata.search).where("timestamp", ">=", new Date(formdata.from)).where("timestamp", "<=", new Date(formdata.to));
+  });
+  
+  invest.valueChanges().subscribe((v)=>{
+  this.investments = v;
+  });
+}
+
+}
+
+if((formdata.type!=="")&&(formdata.from!="")&&(formdata.to !="")){
+
+  if(formdata.type == "name")
+{
+  var invest = this.afs.collection('investments', ref => {
+    return ref.where('name' , '==' ,formdata.search).where("timestamp", ">=", new Date(formdata.from)).where("timestamp", "<=", new Date(formdata.to));
+  });
+  
+  invest.valueChanges().subscribe((v)=>{
+  this.investments = v;
+  });
+
+}
+if(formdata.type == "uid"){
+  var invest = this.afs.collection('investments', ref => {
+    return ref.where('uid' , '==' ,formdata.search).where("timestamp", ">=", new Date(formdata.from)).where("timestamp", "<=", new Date(formdata.to));
+  });
+  
+  invest.valueChanges().subscribe((v)=>{
+  this.investments = v;
+  });
+
+}
+
+if(formdata.type == "rid"){
+  var invest = this.afs.collection('investments', ref => {
+    return ref.where('referralid' , '==' ,formdata.search).where("timestamp", ">=", new Date(formdata.from)).where("timestamp", "<=", new Date(formdata.to));
+  });
+  
+  invest.valueChanges().subscribe((v)=>{
+  this.investments = v;
+  });
+}
+  
+  
+  
+  }
+
+
+
+}
+
+      
+
+
+}
+
+
+
