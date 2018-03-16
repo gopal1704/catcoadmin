@@ -5,7 +5,38 @@
   
       <div class="row">
               <div class="col"><h2 class="main-header">Users</h2>  </div>
+
+              
           </div>
+<br>
+<br>
+          <div class="row">
+
+            <div class="col">
+                <form>
+                    <div class="form-row">
+                      <div class="col">
+                        <input type="text" class="form-control" placeholder="Name">
+                      </div>
+                      <div class="col">
+                        <input type="text" class="form-control" placeholder="Email">
+                      </div>
+                      <div class="col">
+                          <input type="text" class="form-control" placeholder="Mobile">
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="User id">
+                          </div>
+                          <div class="col">
+                            <button type="button" class="btn btn-primary"> search</button>
+                            </div>
+                    </div>
+                  </form>
+            </div>
+          </div>
+          <br>
+          <br>
+
   <div class="row" >
   
     <div class="col"  style="overflow-x: scroll">
@@ -13,41 +44,24 @@
             <thead>
               <tr >
                 <th >Name	</th>
-                <th > Date of Birth	</th>
-                
-  
-                <th>Gender</th>
-                <th >Date of Joining	</th>
                 <th >Email</th>
-  
-                <th >Mobile</th>
+                 <th>Proof</th>
+                 <th>Approval</th>
+                 <th>Edit</th>
+                 <th>View</th>
 
-                <th >Referral Id	</th>
-
-                <th >Address	</th>
-
-                <th > City	</th>
-
-                <th >Country	</th>
-<th>Id</th>
-<th>Proof</th>
               </tr>
             </thead>
             <tbody> 
     <tr *ngFor="let u of users">        
-    <td>{{u.title}} {{u.displayname}} {{u.lastname}}</td>
-    <td> {{cc(u.dob)}} </td>
-    <td> {{u.gender}} </td>
-    <td> {{cc(u.dateofjoining)}} </td>
-    <td> {{u.email}} </td>
-    <td> {{u.mobile}} </td>
-
-    <td> {{u.referralid}} </td>
-    <td> {{u.address}} </td>
-    <td> {{u.city}} </td>
-    <td> {{u.country}} </td>
-    <td> {{u.uid}} </td>
-    <td>{{u.proofurl}}</td>
+    <td style="width: 20%">{{u.title}} {{u.displayname}} {{u.lastname}}</td>
+  
+    <td  style="width: 20%"> {{u.email}} </td>
+    <td  style="width: 15%"><a href="{{u.proofurl}}">View proof</a></td>
+    <td style="width: 15%"><a href="{{u.proofurl}}">Approve</a></td>
+    <td style="width: 15%"><a href="{{u.proofurl}}">Edit</a></td>
+   
+    <td style="width: 15%"><a href="{{u.proofurl}}">View</a></td>
 
 
 

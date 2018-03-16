@@ -25,7 +25,7 @@ investments : any;
 
   converttimestamp(ts){
     var d = new Date(ts);
-    return d.toLocaleString();
+    return d.toLocaleDateString();
     // return  d.getDate() + '/' + (d.getMonth()+1) + '/' + d.getFullYear() + '--' + d.getHours() + ':' +d.getMinutes();
     
     }

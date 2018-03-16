@@ -8,26 +8,24 @@
         <h2 class="main-header">User Accounts</h2>
       </div>
     </div>
-    <div class="row" >
+    <div class="row">
 
-      <div class="col" >
-        <table id="usertable" style="line-height:60%" class="table table-bordered table-hover table-striped text-nowrap">
+      <div class="col" style="max-width:100%" >
+        <table  style="line-height:60% ;" class="table table-bordered table-hover table-striped text-nowrap">
           <thead>
             <tr>
-              <th>Name </th>
-              <th>Date of Joining </th>
-              <th>Total Holdings
+              <th style="width: 20%">Name </th>
+              <th style="width: 10%" >Total Holdings
               </th>
-              <th>Wallet Balance</th>
-              <th>Pending Balance</th>
-              <th>Referral comission</th>
-              <th>Monthly Ref. Earnings</th>
+              <th style="width: 10%">Wallet Balance</th>
+              <th style="width: 10%">Pending Balance</th>
+              <th style="width: 10%">Referral comission</th>
+              <th style="width: 10%" >Monthly Ref. Earnings</th>
             
-              <th>Approval staus</th>
-              <th>Transaction status</th>
+              <!-- <th style="width: 10%">Approval staus</th>
+              <th style="width: 10%">Transaction status</th>
 
-              <th>Id</th>
-              <th>Referral Id </th>
+              <th style="width: 10%">Referral Id </th> -->
              
 
             </tr>
@@ -35,24 +33,22 @@
           <tbody>
             <tr *ngFor="let u of useraccounts">
               
-<td>{{u.name}}</td>
+<td >{{u.name}}</td>
               
-<td>{{converttimestamp(u.joiningdate)}}</td>
-<td>${{u.totalinvestment}}</td>
+<td style="width: 10%">${{u.totalinvestment}}</td>
 
-<td>${{u.walletbalance}}</td>
+<td >${{u.walletbalance}}</td>
 
-<td>${{u.walletpendingbalance}}</td>
-<td>${{u.totalspotearnings}}</td>
+<td style="width: 10%">${{u.walletpendingbalance}}</td>
+<td style="width: 10%">${{u.totalspotearnings}}</td>
 
-<td>${{u.totalreferralearnings}}</td>
-<td>{{u.approvalstatus}}</td>
+<td style="width: 10%">${{u.totalreferralearnings}}</td>
+<!-- <td style="width: 10%">{{u.approvalstatus}}</td>
 
-<td><span  *ngIf="u.transaction == true">approved</span><span  *ngIf="u.transaction == false">pending</span></td>
-<td>{{u.uid}}</td>
+<td style="width: 10%"><span  *ngIf="u.transaction == true">approved</span><span  *ngIf="u.transaction == false">pending</span></td>
 
 
-<td>{{u.referralid}}</td>
+<td style="width: 10%">{{u.referralid}}</td> -->
 
 
 

@@ -13,31 +13,30 @@
           <table style="line-height:60%" class="table  table-bordered table-hover table-striped text-nowrap">
               <thead>
                   <tr>
-                    <th>User Id</th>
-                    <th>Scheme</th>
+                    <th>Name</th>
                     <th>Date</th>
+                    <th >C-Gold</th>
+
+
                     <th>Maturity Date</th>
-                    <th >C-Gold Investment</th>
                     <th>Maturity Value </th>
-                    <th>Duration</th>
-                    <th>Trading Growth</th>
+                   
                     <th>Status</th>
-                    <th>Referral Id</th>
+                    <th>Referral</th>
   
                   </tr>
                 </thead>
   <tbody>
       <tr  *ngFor="let i of investments">
-        <td>{{i.uid}}</td>
-          <td>{{i.scheme}}</td>
-          <td>{{converttimestamp(i.timestamp)}}</td>
-          <td>{{calculateenddate(i.timestamp,i.duration)}}</td>
-          <td class="tdgreen">${{i.amount}}</td>
-          <td class="tdgreen">${{i.amount+(i.amount*(i.interest_rate/100))}}</td>
-          <td>{{i.duration}}</td>
-          <td>{{i.interest_rate}}%</td>
-          <td>{{i.status}}</td>
-          <td>{{i.referralid}}</td>
+        <td style="width: 20%">{{i.name}}</td>
+          <td style="width: 10%">{{converttimestamp(i.timestamp)}}</td>
+          <td style="width: 10%" class="tdgreen">${{i.amount}}</td>
+
+          <td style="width: 10%">{{calculateenddate(i.timestamp,i.duration)}}</td>
+          <td style="width: 10%" class="tdgreen">${{i.amount+(i.amount*(i.interest_rate/100))}}</td>
+         
+          <td style="width: 20%">{{i.status}}</td>
+          <td style="width: 20%">{{i.refname}}</td>
         </tr>
   </tbody>
   
