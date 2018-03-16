@@ -92,7 +92,7 @@ if(formdata.type == "uid"){
 if(formdata.type == "rid"){
   
   var invest = this.afs.collection('investments', ref => {
-    return ref.where('referralid' , '==' ,formdata.search).where("timestamp", ">=", new Date(formdata.from)).where("timestamp", "<=", new Date(formdata.to));
+    return ref.where('referralid' , '==' ,formdata.search);
   });
   
   invest.valueChanges().subscribe((v)=>{
