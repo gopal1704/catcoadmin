@@ -16,7 +16,7 @@ import { take } from 'rxjs/operator/take';
 declare var Messenger: any;
 
 interface Transaction {
-  timestamp: number;
+  timestamp: any;
   uid: string;
   type: string;
   status: string;
@@ -115,7 +115,7 @@ return r;
 approve_withdrawal_request(id,uid,amount,details){
 
   var transaction_referral: Transaction = {
-    timestamp: Date.now(),
+    timestamp: firebase.firestore.FieldValue.serverTimestamp(),
     uid: uid,
     type: 'WD',
     status: 'success',
@@ -135,7 +135,7 @@ approve_withdrawal_request(id,uid,amount,details){
       this.afs.doc<any>(`accountsummary/${uid}`).valueChanges().take(1).subscribe((v) => {
 
         summaryref.update({
-          walletbalance : v.walletbalance - amount,
+          walletpendingbalance : v.walletpendingbalance - amount,
         }).then(()=>{
           return true;
         });
@@ -156,7 +156,7 @@ approve_withdrawal_request(id,uid,amount,details){
     const toaccountsummaryref: AngularFirestoreDocument<any> = this.afs.doc(`accountsummary/${to_wallet}`);
 
     var transaction_to: Transaction = {
-      timestamp: Date.now(),
+      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
       uid: to_wallet,
       type: 'CWT',
       status: 'success',
