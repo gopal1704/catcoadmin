@@ -70,7 +70,7 @@ return r;
     var transactions = this.afs.collection('transactions',ref=>{return ref.orderBy('timestamp','desc');});
     var r = transactions.snapshotChanges().map(actions => {
       return actions.map(a => {
-        const data = a.payload.doc.data() ;
+        const data = a.payload.doc.data();
         const id = a.payload.doc.id;
         return { id, ...data };
       });
@@ -102,7 +102,7 @@ return r;
     var adminw = this.afs.collection('withdrawalrequest');
     var r = adminw.snapshotChanges().map(actions => {
       return actions.map(a => {
-        const data = a.payload.doc.data() ;
+        const data = a.payload.doc.data();
         const id = a.payload.doc.id;
         return { id, ...data };
       });

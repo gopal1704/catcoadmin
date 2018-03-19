@@ -22,6 +22,8 @@ import { InvestmentsComponent } from './investments/investments.component';
 import { TransactionsComponent } from './transactions/transactions.component';
 import { WithdrawalrequestsComponent } from './withdrawalrequests/withdrawalrequests.component';
 import { AddwalletbalanceComponent } from './addwalletbalance/addwalletbalance.component';
+import { EditprofileComponent } from './editprofile/editprofile.component';
+import { ViewprofileComponent } from './viewprofile/viewprofile.component';
 var config = {
   apiKey: "AIzaSyDZctYRBSTRhuIjDsPP-j7ide7LrlHjf4o",
   authDomain: "investment-3327a.firebaseapp.com",
@@ -42,6 +44,8 @@ var config = {
     TransactionsComponent,
     WithdrawalrequestsComponent,
     AddwalletbalanceComponent,
+    EditprofileComponent,
+    ViewprofileComponent,
     
 
   ],
