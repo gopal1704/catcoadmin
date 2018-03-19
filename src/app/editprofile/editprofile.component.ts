@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from "@angular/router";
 import {HttpClient} from '@angular/common/http';
 import { DataService } from '../data.service';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
+
 declare var Messenger: any;
 
 declare var moment : any;
@@ -29,7 +31,7 @@ uid : any;
 firstname : any;
 lastname : any;
 title : any;
-  constructor( private router: Router,private route: ActivatedRoute,private http : HttpClient,private ds: DataService) { }
+  constructor( private router: Router,private route: ActivatedRoute,private http : HttpClient,private ds: DataService,private afs: AngularFirestore) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => this.id = params.id);
@@ -69,7 +71,8 @@ title : any;
     
     for(var i=0;i<this.CountryCodesList.length;i++){
       
-    if(this.CountryCodesList[i].name === value){
+    if(this.CountryCodesList[i].name == value){
+      console.log('aaa');
       console.log(this.CountryCodesList[i].dial_code);
       this.isdcode = this.CountryCodesList[i].dial_code;
     }
@@ -82,6 +85,52 @@ title : any;
    var dd= new Date(d);
 return moment(d).format('YYYY-MM-DD');
   }
+  UpdateProfile(){
+    this.loading = true;
+    console.log(this.gender);
+    console.log(this.country);
+    console.log(this.dob);
+    const userprofileref: AngularFirestoreDocument<any> = this.afs.doc(`users/${this.uid}`); //get the refrence for updating initial user data
+    const usersummaryref: AngularFirestoreDocument<any> = this.afs.doc(`accountsummary/${this.uid}`); //get the refrence for updating initial user data
+
+    userprofileref.update({
+    displayname : this.firstname,
+    lastname : this.lastname,
+    title:this.title,
+      dob: this.dob,
+      gender : this.gender, 
+      country : this.country,
+      isdcode : this.isdcode,
+      mobile : this.mobile,
+      address : this.address,
+
+      city: this.city
+
+    }).then(()=>{
+      usersummaryref.update({
+        name : this.title +' '+this.firstname+' '+this.lastname
+      });
+this.loading = false;
+      Messenger().post({
+        message: 'Profile updated successfull!',
+        type: 'success',
+        showCloseButton: true
+      });
+    }).catch(e=>{
+console.log(e);
+this.loading = false;
+      Messenger().post({
+        message: 'error updating profile',
+        type: 'success',
+        showCloseButton: true
+      });
+    });
+   
+
+  }
+
+
+
 
 
 

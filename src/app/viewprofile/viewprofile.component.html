@@ -1,3 +1,83 @@
-<p>
-  viewprofile works!
-</p>
+<div class="row h-100 signup ">
+
+  
+  <div class="col-6 mx-auto my-auto " style="margin-top: 5%">
+<h2 class="text-center" style="margin-bottom: 5%">My Profile</h2>
+            
+
+
+
+      <div class="">
+
+        <div class="card-body">
+
+
+
+<div class="row">
+<div class="col">
+
+<table style="font-size:80%" class="table  table-bordered table-hover table-striped text-nowrap ">
+
+<tbody>
+<tr>
+  <th>Name</th>
+  <td>{{(Profile| async)?.title}} {{(Profile| async)?.displayname}}  {{(Profile| async)?.lastname}}</td>
+  
+</tr>
+<tr><th>Date of Birth</th>
+<td>{{converttimestampdob((Profile| async)?.dob)}}</td></tr>
+<tr>
+<th>Gender</th>
+<td>{{(Profile| async)?.gender}}</td>
+
+
+
+</tr>
+
+<tr>
+<th> Date of Joining </th>
+<td>{{converttimestampdob((Profile| async)?.dateofjoining)}}</td></tr>
+<tr>
+<th>Email</th>
+<td>{{(Profile| async)?.email}}</td></tr>
+<tr>
+<th>Mobile</th>
+<td>{{(Profile| async)?.isdcode}}  {{(Profile| async)?.mobile}}</td></tr>
+
+<tr>
+<th> Referral Id</th>
+<td>{{(Profile| async)?.referralid}}</td></tr>
+<tr>
+<th>Address</th>
+<td>{{(Profile| async)?.address}}</td></tr>
+<tr>
+<th>City</th>
+<td>          {{(Profile| async)?.city}}
+</td></tr>
+<tr>
+<th>Country</th>
+<td>{{(Profile| async)?.country}}</td>
+</tr>
+<tr>
+<th>Id Proof </th>
+<td><a class="btn btn-primary" href="{{(Profile| async)?.proofurl}}"    [attr.disabled] = "(Profile| async)?.proofurl === '' ? 'disabled' : null">view proof</a> 
+</td>
+
+</tr>
+</tbody>
+
+</table>
+
+</div>
+    
+
+</div> 
+
+
+        </div>
+        
+      </div>
+
+  </div>
+</div>
+
