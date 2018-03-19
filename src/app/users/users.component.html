@@ -64,10 +64,10 @@
     <td  style="width: 20%"> {{u.email}} </td>
     <td  style="width: 20%"> {{u.uid}}</td>
     <td  style="width: 10%"><a href="{{u.proofurl}}">View proof</a></td>
-    <td style="width: 10%"><a href="{{u.proofurl}}">Approve</a></td>
-    <td style="width: 10%"><a href="{{u.proofurl}}">Edit</a></td>
+    <td style="width: 10%"><a href="#">Approve</a></td>
+    <td style="width: 10%"><a routerLink="/dashboard/editprofile/{{u.uid}}">Edit</a></td>
    
-    <td style="width: 10%"><a href="{{u.proofurl}}">View</a></td>
+    <td style="width: 10%"><a routerLink="/dashboard/viewprofile/{{u.uid}}">View</a></td>
 
 
 

@@ -98,6 +98,14 @@ return r;
 
   }
   //////////
+
+  get_profile_info(id){
+    var itemdoc = this.afs.doc<any>(`users/${id}`);
+    return itemdoc;
+  }
+
+
+  ///////////
   get_admin_withdrawal(){
     var adminw = this.afs.collection('withdrawalrequest');
     var r = adminw.snapshotChanges().map(actions => {

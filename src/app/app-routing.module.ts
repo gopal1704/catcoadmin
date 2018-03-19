@@ -8,6 +8,8 @@ import { InvestmentsComponent } from './investments/investments.component';
 import { TransactionsComponent } from './transactions/transactions.component';
 import { WithdrawalrequestsComponent } from './withdrawalrequests/withdrawalrequests.component';
 import { AddwalletbalanceComponent } from './addwalletbalance/addwalletbalance.component';
+import { EditprofileComponent } from './editprofile/editprofile.component';
+import { ViewprofileComponent } from './viewprofile/viewprofile.component';
 
 
 const routes: Routes = [
@@ -23,8 +25,11 @@ children :[
     { path : 'transactions' , component : TransactionsComponent},
     { path : 'withdrawalrequests' , component : WithdrawalrequestsComponent },
     { path : 'addwalletbalance' , component : AddwalletbalanceComponent },
+    { path : 'editprofile/:id' , component : EditprofileComponent },
+    { path : 'viewprofile/:id' , component : ViewprofileComponent },
 
-
+    
+    
 
  
 ]
