@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
+declare var Messenger: any;
 
 declare var $: any;
 
@@ -14,6 +15,8 @@ export class UsersComponent implements OnInit {
   //
   users: any;
   usersearchForm : FormGroup;
+  approval : any;
+  approvalid : any;
   //
   constructor(private ds: DataService,private fb: FormBuilder,private afs: AngularFirestore) { }
 
@@ -90,5 +93,36 @@ if(formdata.type=="id"){
          return  d.getDate() + '/' + (d.getMonth()+1) + '/' + d.getFullYear();
         
         }
+        a(name,id){
+          this.approval = name;
+          this.approvalid = id;
+          $('#approval').modal({show:true});
 
+        }
+      
+approve(){
+  console.log(this.approvalid);
+  const usersummaryref: AngularFirestoreDocument<any> = this.afs.doc(`accountsummary/${this.approvalid}`); //get the refrence for updating initial user data
+usersummaryref.update({
+  approvalstatus : "approved"
+}).then(()=>{
+  Messenger().post({
+    message: `user ${this.approval} approved!`,
+    type: 'success',
+    showCloseButton: true
+  });
+}).catch(()=>{
+
+  Messenger().post({
+    message: 'error in approval please try again',
+    type: 'success',
+    showCloseButton: true
+  });
+});
+
+
+
+
+
+}
 }

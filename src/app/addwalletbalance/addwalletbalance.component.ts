@@ -71,7 +71,7 @@ this.proceed = false;
     console.log(formdata);
 
     if((formdata.amount!="")&&(formdata.amount>0 )&&(formdata.amount!=null)){
-this.ds.transfer_to_wallet(formdata.amount,formdata.toaccount);
+this.ds.transfer_to_wallet(formdata.amount,formdata.toaccount,this.Accountname);
     }
       }
 

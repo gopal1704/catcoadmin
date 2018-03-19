@@ -158,7 +158,7 @@ approve_withdrawal_request(id,uid,amount,details){
 
 
   /***********WALLET TRANSFER*************** */
-  transfer_to_wallet(amount, to_wallet) {
+  transfer_to_wallet(amount, to_wallet,name) {
     
     var reftrans = this.afs.collection('/transactions');
     const toaccountsummaryref: AngularFirestoreDocument<any> = this.afs.doc(`accountsummary/${to_wallet}`);
@@ -173,7 +173,7 @@ approve_withdrawal_request(id,uid,amount,details){
       amount: 0,
       debit: 0,
       credit: amount,
-      narration: `Credit Wallet Transfer  from : admin `
+      narration: `Credit Wallet Transfer  from : admin to ${name} ,id ${to_wallet}`
     };         
 
          
