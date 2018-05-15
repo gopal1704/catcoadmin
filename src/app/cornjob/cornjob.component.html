@@ -1,0 +1,101 @@
+<div class="row h-100">
+  <div class="col">
+
+
+    <div class="row">
+      <div class="col">
+        <h2 class="main-header"> User Holdings</h2>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+
+      <div class="col">
+        <form [formGroup]="usersearchForm">
+          <div class="form-row">
+
+            <div class="col">
+              <select class="form-control" formControlName="type" id="exampleFormControlSelect1">
+                <option value="name">Full Name</option>
+                <option value="uid">User Id</option>
+                <option value="rid">Referral Id</option>
+
+              </select>
+            </div>
+            <div class="col">
+
+              <input type="text" formControlName="search" class="form-control" placeholder="">
+            </div>
+            <div class="col">
+              <input type="date" class="form-control" formControlName="from">
+            </div>
+            <div class="col">
+              <input type="date" class="form-control" formControlName="to">
+            </div>
+            <div class="col">
+
+              <button type="button" class="form-control" (click)="search(usersearchForm.value)" class="btn btn-primary"> search</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <br>
+
+    <div class="row">
+
+      <div class="col">
+
+        <table style="font-size :80%" class="table  table-bordered table-hover table-striped">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Date</th>
+              <th>C-Gold</th>
+
+
+              <th>Maturity Date</th>
+              <th>Maturity Value </th>
+
+              <th>Status</th>
+              <th>Referral</th>
+
+              <th>First Month</th>
+              <th>Secont Month</th>
+              <th>Third Month</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let i of investments_corn">
+              <td>{{i.name}}</td>
+              <td>{{converttimestamp(i.timestamp)}}</td>
+              <td class="tdgreen">${{i.amount}}</td>
+
+              <td>{{calculateenddate(i.timestamp,i.duration)}}</td>
+              <td class="tdgreen">${{i.amount+(i.amount*(i.interest_rate/100))}}</td>
+
+              <td>{{i.status}}</td>
+              <td>{{i.refname}}</td>
+              <td> {{i.first_bonus}}
+                <button type="button"  (click)="send_first_bonus(i.id)" >
+                credit</button>
+              </td>
+              <td> {{i.second_bonus}}
+                <button type="button" (click)="send_second_bonus(i.id)" >
+                credit</button>
+              </td>
+              <td> {{i.third_bonus}}
+                <button type="button"  (click)="send_third_bonus(i.id)">
+                credit</button>
+              </td>
+
+            </tr>
+          </tbody>
+
+        </table>
+
+
+
+      </div>
+    </div>

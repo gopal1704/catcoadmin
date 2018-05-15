@@ -10,6 +10,7 @@ import { WithdrawalrequestsComponent } from './withdrawalrequests/withdrawalrequ
 import { AddwalletbalanceComponent } from './addwalletbalance/addwalletbalance.component';
 import { EditprofileComponent } from './editprofile/editprofile.component';
 import { ViewprofileComponent } from './viewprofile/viewprofile.component';
+import { CornjobComponent } from './cornjob/cornjob.component';
 
 
 const routes: Routes = [
@@ -27,6 +28,7 @@ children :[
     { path : 'addwalletbalance' , component : AddwalletbalanceComponent },
     { path : 'editprofile/:id' , component : EditprofileComponent },
     { path : 'viewprofile/:id' , component : ViewprofileComponent },
+    { path : 'corn' , component : CornjobComponent },
 
     
     

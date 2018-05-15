@@ -24,6 +24,7 @@ import { WithdrawalrequestsComponent } from './withdrawalrequests/withdrawalrequ
 import { AddwalletbalanceComponent } from './addwalletbalance/addwalletbalance.component';
 import { EditprofileComponent } from './editprofile/editprofile.component';
 import { ViewprofileComponent } from './viewprofile/viewprofile.component';
+import { CornjobComponent } from './cornjob/cornjob.component';
 var config = {
   apiKey: "AIzaSyDZctYRBSTRhuIjDsPP-j7ide7LrlHjf4o",
   authDomain: "investment-3327a.firebaseapp.com",
@@ -46,6 +47,7 @@ var config = {
     AddwalletbalanceComponent,
     EditprofileComponent,
     ViewprofileComponent,
+    CornjobComponent,
     
 
   ],

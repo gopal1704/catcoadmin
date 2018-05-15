@@ -84,11 +84,57 @@ return r;
   /////////
 
   get_investments() {
+  
+    var investmentscollection = this.afs.collection('investments', ref => {
+      return ref.orderBy('timestamp','desc');
 
-    var inv = this.afs.collection('investments');
+    });
+    return investmentscollection.valueChanges();
+
+
+
+
+
+
+//     var inv = this.afs.collection('investments');
+//     var r = inv.snapshotChanges().map(actions => {
+//       return actions.map(a => {
+//         const data = a.payload.doc.data();
+//         const id = a.payload.doc.id;
+//         return { id, ...data };
+//       });
+//     });
+
+// return r;
+
+  }
+  //////////
+
+
+
+
+  ////// get investments corn
+
+
+  get_investments_corn(){
+  
+    // var investmentscollection = this.afs.collection('investments', ref => {
+    //   return ref.orderBy('timestamp','desc');
+
+    // });
+    // return investmentscollection.valueChanges();
+
+
+
+
+
+
+    var inv = this.afs.collection('investments',ref=>{
+      return ref.orderBy('timestamp','desc');
+    });
     var r = inv.snapshotChanges().map(actions => {
       return actions.map(a => {
-        const data = a.payload.doc.data() ;
+        const data = a.payload.doc.data();
         const id = a.payload.doc.id;
         return { id, ...data };
       });
@@ -97,7 +143,9 @@ return r;
 return r;
 
   }
-  //////////
+
+
+  //////
 
   get_profile_info(id){
     var itemdoc = this.afs.doc<any>(`users/${id}`);
