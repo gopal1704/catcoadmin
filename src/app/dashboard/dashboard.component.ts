@@ -15,9 +15,15 @@ export class DashboardComponent implements OnInit {
   
 if(this.ds.logged_in == false){
 
+  this.router.navigate(['/login']);
 
 }
 
   }
+
+  logout(){
+    this.ds.logged_in = false;
+  }
+
 
 }
