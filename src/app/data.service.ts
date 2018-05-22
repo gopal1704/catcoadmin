@@ -31,11 +31,11 @@ interface Transaction {
 }
 @Injectable()
 export class DataService {
-
+  logged_in = false;
   constructor(private afs: AngularFirestore) { }
 
   //////////
-  get_users() {
+  get_users(){
     var users = this.afs.collection('users');
     var r = users.snapshotChanges().map(actions => {
       return actions.map(a => {
