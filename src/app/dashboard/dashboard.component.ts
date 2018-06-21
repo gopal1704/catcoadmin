@@ -13,11 +13,11 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
   
-if(this.ds.logged_in == false){
+// if(this.ds.logged_in == false){
 
-  this.router.navigate(['/login']);
+//   this.router.navigate(['/login']);
 
-}
+// }
 
   }
 

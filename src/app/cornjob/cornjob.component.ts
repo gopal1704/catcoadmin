@@ -106,6 +106,27 @@ export class CornjobComponent implements OnInit {
     }
 
   }
+  final(id){
+
+    console.log(id);
+    var txt;
+    var r = confirm("confirm");
+    if (r == true) {
+
+      //
+      console.log(id);
+
+      this.http.post('https://catcotrade.com/final', { id: id }).subscribe(res => {
+        alert(res);
+
+      });
+      //
+
+    } else {
+    }
+
+
+  }
   search(formdata) {
     console.log(formdata);
     if ((formdata.from != "") && (formdata.to != "") && (formdata.type == "")) {
