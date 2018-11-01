@@ -65,8 +65,8 @@
     <td  style="width: 20%"> {{u.uid}}</td>
     <td  style="width: 10%">
     
-    <a  *ngIf = "u.proofurl != ''"  href="{{u.proofurl}}">View  proof</a>
-    <p  *ngIf = "u.proofurl === ''">no  proof uploaded</p>
+    <a  *ngIf = "u.proofurl != ''"  href="{{u.proofurl}}" target="_blank">View  proof</a>
+    <p  *ngIf = "u.proofurl === ''" >no  proof uploaded</p>
 
   </td>
 

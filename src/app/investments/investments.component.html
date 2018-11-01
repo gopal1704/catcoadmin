@@ -63,7 +63,7 @@
           <td style="width: 10%" class="tdgreen">${{i.amount}}</td>
 
           <td style="width: 10%">{{calculateenddate(i.timestamp,i.duration)}}</td>
-          <td style="width: 10%" class="tdgreen">${{i.amount+(i.amount*(i.interest_rate/100))}}</td>
+          <td style="width: 10%" class="tdgreen">${{Math.round(i.amount+(i.amount*(i.interest_rate/100)))}}</td>
          
           <td style="width: 20%">{{i.status}}</td>
           <td style="width: 20%">{{i.refname}}</td>

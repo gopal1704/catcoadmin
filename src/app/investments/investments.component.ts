@@ -11,9 +11,10 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 export class InvestmentsComponent implements OnInit {
 investments : any;
 usersearchForm : FormGroup;
+Math: any;
 
   constructor(private ds: DataService,private fb: FormBuilder,private afs: AngularFirestore) { 
-
+this.Math = Math;
   }
 
   ngOnInit() {

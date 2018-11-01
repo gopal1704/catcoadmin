@@ -68,7 +68,7 @@ sendpasswordreset(){
 Login() {
   this.loading = true;
 
- if(this.email=="info@catcotrade.info") //
+ if(this.email=="info@catcotrade.info" || this.email=="vgopalooty@gmail.com" ) //
 {
   this.afAuth.auth.signInWithEmailAndPassword(this.email, this.password)
     .then(value => {
